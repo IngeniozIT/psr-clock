@@ -61,5 +61,8 @@
       "@quality:code",
       "echo 'OK'"
     ]
+  },
+  "config": {
+    "allow-plugins": true
   }
 }
