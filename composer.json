@@ -1,0 +1,65 @@
+{
+  "name": "ingenioz-it/clock",
+  "type": "library",
+  "description": "A PSR clock",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "IngeniozIT",
+      "email": "contact@ingenioz.it"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "psr/clock": "^1.0"
+  },
+  "provide": {
+    "psr/clock-implementation": "1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "phan/phan": "*",
+    "squizlabs/php_codesniffer": "*",
+    "phpstan/phpstan": "*",
+    "infection/infection": "*",
+    "vimeo/psalm": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "IngeniozIT\\Clock\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "IngeniozIT\\Clock\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "serve": "php -S localhost:8000 index.php",
+    "test": "vendor/bin/phpunit",
+    "testdox": "@test --testdox",
+    "test:coverage:xml": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover tmp/coverage.xml",
+    "test:coverage:html": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html doc/",
+    "quality:infection": "vendor/bin/infection",
+    "quality:phpcbf": "vendor/bin/phpcbf",
+    "quality:phpcs": "vendor/bin/phpcs",
+    "quality:phpstan": "vendor/bin/phpstan analyze --xdebug",
+    "quality:psalm": "vendor/bin/psalm --show-info=true --no-cache",
+    "quality:phan": "vendor/bin/phan",
+    "quality:tests": [
+      "@quality:infection"
+    ],
+    "quality:code": [
+      "@quality:phpcs",
+      "@quality:phpstan",
+      "@quality:psalm",
+      "@quality:phan"
+    ],
+    "fulltest": [
+      "@test:coverage:xml",
+      "@quality:tests",
+      "@quality:code",
+      "echo 'OK'"
+    ]
+  }
+}
