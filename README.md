@@ -1,6 +1,6 @@
 # Clock
 
-A PSR-20 Clock implementation.
+A [PSR 20](https://www.php-fig.org/psr/psr-20/) Clock implementation.
 
 Provides :
 - A system clock
